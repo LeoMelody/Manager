@@ -11,7 +11,7 @@
                             @close="handleClose"
                             :router="true"
                             :default-openeds="['1-1']"
-                            background-color="#545c64"
+                            background-color="rgb(73,80,79)"
                             text-color="#fff"
                             active-text-color="#ffd04b">
                     <el-submenu index="1-1">
@@ -39,8 +39,8 @@
                 </el-menu>
             </div>     
         </div>
-        <div class="fix-box">
-            <i class=""></i>
+        <div class="fix-box" @click="hideMenu">
+            <i class="el-icon-d-arrow-left" v-show="isMore"></i>
         </div>
         <div class="h-cotainer">
             
@@ -64,27 +64,36 @@ export default {
     },
     handleOpen() {
         console.log('open')
+    },
+    hideMenu() {
+
     }
   }
 };
 </script>
 <style lang="stylus">
+menu-bg = rgb(73,80,79)
+
 .home-wrapper {
     display: flex;
     flex-direction: row;
-
     .h-menu {
         margin 0
         padding 0
         width 300px
         overflow-y scroll
-        background #545c64
+        background menu-bg
         color #fff
         align-self stretch
         .el-menu {
             border none
-            .el-submenu__title {
-                font-size 24px
+            .el-submenu {
+                .el-submenu__title {
+                    font-size 24px
+                }
+                .el-menu-item {
+                    font-size 18px
+                }
             }
         }
         .m-header {
@@ -107,6 +116,34 @@ export default {
 
     .h-container {
         flex 1
+    }
+
+    .fix-box {
+        align-self center
+        position absolute
+        width 25px
+        height 50px
+        line-height 50px
+        background rgba(0,0,0,.1)
+        cursor pointer
+        left 265px
+        border none 
+        color #fff
+        i:hover{
+            animation iChange 1s infinite
+        }
+    }
+}
+
+@keyframes iChange {
+    0% {
+        transform scale(1)
+    }
+    50% {
+        transform scale(1.15)
+    }
+    100% {
+        transform scale(1)
     }
 }
 </style>
