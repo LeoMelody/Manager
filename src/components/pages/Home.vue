@@ -68,6 +68,14 @@ export default {
     hideMenu() {
 
     }
+  },
+  mounted() {
+      var sessionkey = localStorage.getItem('sessionkey')
+      if (!sessionkey) {
+          this.$router.push({
+            path: '/'
+          })
+      }
   }
 };
 </script>

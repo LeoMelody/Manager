@@ -61,6 +61,7 @@ export default {
           }
           if (this.adminName === 'admin' && this.password === 'admin') {
               // 前往
+              localStorage.setItem('sessionkey', '123456')  
               this.$router.push({
                   path: '/home'
               })

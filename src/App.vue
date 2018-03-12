@@ -6,7 +6,14 @@
 
 <script>
 export default {
-  name: 'app'
+  data() {
+    return {
+      name: 'app'
+    }
+  },
+  mounted: function() {
+    console.log('创建')
+  }
 }
 </script>
 
