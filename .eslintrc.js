@@ -29,6 +29,7 @@ module.exports = {
     'space-infix-ops': 0,
     'key-spacing': 0,
     'space-before-blocks': 0,
-    'no-unused-vars': 0
+    'no-unused-vars': 0,
+    'eqeqeq': 0
   }
 }

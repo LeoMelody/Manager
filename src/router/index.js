@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/pages/Login'
 import Home from '@/components/pages/Home'
 import Form from '@/components/pages/BaseForm'
+import Table from '@/components/pages/BaseTable'
 
 Vue.use(Router)
 
@@ -23,6 +24,10 @@ export default new Router({
           path: 'form',
           name: 'form',
           component: Form
+        }, {
+          path: 'table',
+          name: 'table',
+          component: Table
         }
       ]
     }

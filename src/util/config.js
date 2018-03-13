@@ -1,7 +1,9 @@
 var preUrl = location.origin + '/core'
 
 var APIS = {
-    getSessionKey: preUrl + '/getSessionKey'
+    getSessionKey: preUrl + '/getSessionKey',
+    login: preUrl + '/login',
+    tableData: preUrl + '/tableData'
 }
 
 export default {

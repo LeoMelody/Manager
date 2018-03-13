@@ -1,5 +1,7 @@
 <template>
-  
+  <div>
+      woshiform
+  </div>
 </template>
 <script>
 export default {

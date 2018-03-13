@@ -1,6 +1,6 @@
 <template>
     <div class="home-wrapper">
-        <div class="h-menu">
+        <!-- <div class="h-menu">
             <div v-show="isMore">
                 <div class="m-header">
                     侧边菜单
@@ -38,16 +38,18 @@
                     </el-submenu>
                 </el-menu>
             </div>     
-        </div>
-        <div class="fix-box" @click="hideMenu">
+        </div> -->
+        <slide-menu></slide-menu>
+        <!-- <div class="fix-box" @click="hideMenu">
             <i class="el-icon-d-arrow-left" v-show="isMore"></i>
-        </div>
+        </div> -->
         <div class="h-cotainer">
-            
+            <router-view></router-view>
         </div>
     </div>
 </template>
 <script>
+import slideMenu from '../common/SlideMenu'
 export default {
   data() {
     return {
@@ -76,6 +78,9 @@ export default {
             path: '/'
           })
       }
+  },
+  components: {
+      slideMenu: slideMenu
   }
 };
 </script>
@@ -85,6 +90,10 @@ menu-bg = rgb(73,80,79)
 .home-wrapper {
     display: flex;
     flex-direction: row;
+    width 100%
+    .h-cotainer {
+        flex 1
+    }
     .h-menu {
         margin 0
         padding 0
@@ -121,10 +130,6 @@ menu-bg = rgb(73,80,79)
 		background-color: rgba(0, 0, 0, 0.2);
         height: 30px; 
 	}
-
-    .h-container {
-        flex 1
-    }
 
     .fix-box {
         align-self center

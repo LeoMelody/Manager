@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import utils from './util/utils'
+
 export default {
   data() {
     return {
@@ -12,7 +14,22 @@ export default {
     }
   },
   mounted: function() {
-    console.log('创建')
+    this.checkLogin()
+  },
+  methods: {
+    checkLogin() {
+      var session = sessionStorage.getItem('session')
+      if (session) {
+        this.getUser()
+      } else {
+        this.$router.push({
+          path: '/'
+        })
+      }
+    },
+    getUser() {
+
+    }
   }
 }
 </script>

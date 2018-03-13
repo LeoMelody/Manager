@@ -36,6 +36,8 @@
   </div>
 </template>
 <script>
+import utils from '../../util/utils'
+
 export default {
   data() {
       return {
@@ -56,23 +58,29 @@ export default {
   },
   methods: {
       login() {
-          if (this.isCheck) {
-             // 处理缓存，否则不处理
-          }
-          if (this.adminName === 'admin' && this.password === 'admin') {
-              // 前往
-              localStorage.setItem('sessionkey', '123456')  
-              this.$router.push({
-                  path: '/home'
-              })
-          } else {
-            setTimeout(() => {
-                this.loginError = true
-            }, 300)
-          }
+        var that = this
+        utils.getUserSession(function() {
+            utils.sendRequest({
+                url: utils.getApi('login'),
+                data: {
+                    userName: that.adminName,
+                    password: that.password
+                },
+                callback(res) {
+                    if (res.status == 200 && res.data.data && res.data.retCode == '1') {
+                        var userInfo = JSON.stringify(res.data.data)
+                        sessionStorage.setItem('userInfo', userInfo)
+                        // 这里同时可以触发vuex 将用户信息提交到仓库，方便后面使用
+                        that.$router.push({
+                            path: '/home'
+                        })
+                    }
+                }
+            })
+        })
       },
       closeError() {
-          this.loginError = false
+        this.loginError = false
       }
   }
 }
